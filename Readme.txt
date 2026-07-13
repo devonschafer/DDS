@@ -1,4 +1,4 @@
-DDS v1.0.0
+DDS v1.2.0
 DevonDataStructure
 The vision of the project:
 Why was dds developed?. The vision is to create a data structure that is simple to write and understand. A data structure that can be read and written to from programs or by hand. In my years of working with other data structures and data sets, I wanted certain data structures to work differently. Hopefully others will see the value in dds too.
@@ -11,7 +11,7 @@ dds.py is the module.
 ddsdocs.py is the documentation and examples gui built in python3-tkinter.
 
 Version:
-v1.0.0,,Third digit, increased by 2, is the version of the GUI(frontend),,Second digit, increased by 2, is the version of the dds module(backend),,First digit, increased by 1, is the version of the entire project when the third, second, or both digits have reached 8 (or fourth revision).
+v1.2.0,,Third digit, increased by 2, is the version of the GUI(frontend),,Second digit, increased by 2, is the version of the dds module(backend),,First digit, increased by 1, is the version of the entire project when the third, second, or both digits have reached 8 (or fourth revision).
 
 Documentation: Methods,
 DDS.readFile(filename, option, values)
@@ -22,8 +22,11 @@ DDS.returnValue(filename, option, values)
 DDS.valuesToList(filename, option, values)
 DDS.returnSpecificValue(filename, option, values)
 DDS.appendFile(filename, option, values)
+DDS.writeFile(filename, option, values)
 DDS.searchByKey(filename, option, values)
-DDS.virtualFile(filename, option, values)
+DDS.countlines(filename, option, values)
+DDS.virtualRead(filename, option, values)
+DDS.virtualLines(filename, 'all', values)
 
 DDS.readFile
 Example:DDS.readFile('testdata.dds', 'all', None)
@@ -65,8 +68,22 @@ DDS.searchByKey
 Example:DDS.searchByKey('testdata.dds', 'Hello', (1,8))
 Not finished. Might need this to be a search function unlike returnKey or returnValue. filename=path_to_file.dds, option=str('key'), values=tuple(line_number_start, line_number_end).
 
-DDS.virtualFile
-Example:DDS.virtualFile(DDS.virtual_filename, None, 'value')
-Used to reference a variable in dds format instead of interacting with a dds file. filename=variable_in_dds_format, option=None, values=str('value')
-Example:DDS.virtualFile(DDS.virtual_filename, 5, 'value')
-Used as previous example and when multiple values are present. filename=variable_in_dds_format, option=int(), values=str('value').
+DDS.countLines
+Example:DDS.countLines('testdata.dds', 'all', 'count')
+Returns the number of lines in a DDS file. filename=path_to_file.dds, option=str('all'), values=str('count').
+
+DDS.virtualRead (Changed from V1.0.0 DDS.virtualFile)
+Example:DDS.virtualRead(DDS.virtual_filename, (4,1), 'value')
+Used to reference a variable in dds format instead of interacting with a dds file. filename=variable_in_dds_format, option=tuple, values=str('value')
+filename=variable_in_dds_format, option=int, values=str('key')
+Example:DDS.virtualRead(DDS.virtual_filename, (4,1), 'value')
+Example:DDS.virtualRead(DDS.virtual_filename, 4, 'key')
+When option is a tuple and values is 'value', this will return the value at the specific index.
+When option is a int and values is 'key', this will return the key for line int.
+filename=variable_in_dds_format, option=tuple, values=str('value').
+filename=variable_in_dds_format, option=int(), values=str('key').
+
+DDS.virtualLines
+Example:DDS.virtualLines(DDS.virtual_filename, 'all', 'count')
+Returns the number of lines in a DDS formatted variable. Does not completely work yet.
+filename=variable_in_dds_format, option=str('all'), values=str('count').
