@@ -1,7 +1,7 @@
 # DDS
 A new data structure using python.
 
-DDS v1.2.0
+DDS v1.4.2
 DevonDataStructure
 The vision of the project:
 Why was dds developed?. The vision is to create a data structure that is simple to write and understand. A data structure that can be read and written to from programs or by hand. In my years of working with other data structures and data sets, I wanted certain data structures to work differently. Hopefully others will see the value in dds too.
@@ -14,7 +14,7 @@ dds.py is the module.
 ddsdocs.py is the documentation and examples gui built in python3-tkinter.
 
 Version:
-v1.2.0,,Third digit, increased by 2, is the version of the GUI(frontend),,Second digit, increased by 2, is the version of the dds module(backend),,First digit, increased by 1, is the version of the entire project when the third, second, or both digits have reached 8 (or fourth revision).
+v1.4.2,,Third digit, increased by 2, is the version of the GUI(frontend),,Second digit, increased by 2, is the version of the dds module(backend),,First digit, increased by 1, is the version of the entire project when the third, second, or both digits have reached 8 (or fourth revision).
 
 Documentation: Methods,
 DDS.readFile(filename, option, values)
@@ -30,6 +30,19 @@ DDS.searchByKey(filename, option, values)
 DDS.countlines(filename, option, values)
 DDS.virtualRead(filename, option, values)
 DDS.virtualLines(filename, 'all', values)
+
+NEW!
+
+DDS.pathValidation(filepath, option, values)
+DDS.createHash(filename, key, password, pin)
+DDS.verifyHash(filename, key, pin)
+DDS.recursiveReturn(filename, option, values)
+DDS.setTimestamp(filename, option, hours, minutes)
+DDS.beforeTimestamp(filename, option, values)
+DDS.afterTimestamp(filename, option, values)
+DDS.equalTimestamp(filename, option, values)
+DDS.togoTimestamp(filename, option, values)
+DDS.elapsedTimestamp(filename, option, values)
 
 DDS.readFile
 Example:DDS.readFile('testdata.dds', 'all', None)
@@ -88,5 +101,46 @@ filename=variable_in_dds_format, option=int(), values=str('key').
 
 DDS.virtualLines
 Example:DDS.virtualLines(DDS.virtual_filename, 'all', 'count')
-Returns the number of lines in a DDS formatted variable. Does not completely work yet.
-filename=variable_in_dds_format, option=str('all'), values=str('count').
+Returns the number of lines in a DDS formatted variable. Does not completely work yet. filename=variable_in_dds_format, option=str('all'), values=str('count').
+
+NEW!
+
+DDS.pathValidation
+Example:DDS.pathValidation('/path/to/file/testdata.dds', None, None)
+Returns True if the given file exists. filepath=/path/to/file.txt, option=None, values=None.
+
+DDS.createHash
+Example:DDS.createHash('test_create_hash.dds', 'devon', 'password', 123456)
+Creates a dds formatted file with the given key and encrypts the password, hashes with pin, as the value. filename=path_to_file.dds, key=str('key'), password=str('password'), pin=int(pin).
+
+DDS.verifyHash
+Example:DDS.verifyHash('test_create_hash.dds', 'password', 123456)
+Given the password and pin, this function will verify the given against the saved hash file and return True if given is the correct password or False if not. filename=path_to_file.dds, password=str('password'), pin=int(pin).
+
+DDS.recursiveReturn
+Example:DDS.recursiveReturn('testdata.dds', 2, 'recursive')
+With a large dds file with multiple values per line, this will return a requested value for each line. filename=path_to_file.dds, option=int(value), values='recursive'.
+
+DDS.setTimestamp
+Example:DDS.setTimestamp('testingtime.dds', 'assembler 3', 0, 0)
+Saves a timestamp in a dds formatted file. If hours and minutes=0, then current time will be used for timestamp. Hours and minutes can be projected out, Ex: hours=1, minutes=30, to set the timestamp for an additional 1.5 hours in the future instead of the current time. filename=path_to_file.dds, option=str('key'), hours=int(hour), minutes=int(minutes).
+
+DDS.beforeTimestamp
+Example:DDS.beforeTimestamp('testingtime.dds', 'assembler 3', None)
+Given the timestamp file that was created, return True if current time is before timestamp. filename=path_to_timestamp_file.dds, option=str('key'), values=None)
+
+DDS.afterTimestamp
+Example:DDS.afterTimestamp('testingtime.dds', 'assembler 3', None)
+Given the timestamp file that was created, return True if current time is after timestamp. filename=path_to_timestamp_file.dds, option=str('key'), values=None)
+
+DDS.equalTimestamp
+Example:DDS.equalTimestamp('testingtime.dds', 'assembler 3', None)
+Given the timestamp file that was created, return True if current time is equal to timestamp. filename=path_to_timestamp_file.dds, option=str('key'), values=None)
+
+DDS.togoTimestamp
+Example:DDS.togoTimestamp('testingtime.dds', 'assembler 3', None)
+Given the timestamp file that was created, compare to timestamp, how much time to go. filename=path_to_timestamp_file.dds, option=str('key'), values=None)
+
+DDS.elapsedTimestamp
+Example:DDS.elapsedTimestamp('testingtime.dds', 'assembler 3', None)
+Given the timestamp file that was created, compare to timestamp, how much time has elapsed. filename=path_to_timestamp_file.dds, option=str('key'), values=None)
