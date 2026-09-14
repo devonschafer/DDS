@@ -1,5 +1,5 @@
 #DevonDataStructure
-#v1.0.0
+#v1.4.2
 from tkinter import *
 from dds import DDS
 
@@ -79,18 +79,68 @@ def func10():
 
 def func11():
     description_box.delete("1.0","end")
-    description_box.insert(END, DDS.returnValue(ddsfile, 15, 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (15,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (15,2), 'value'))
 
 def func12():
     description_box.delete("1.0","end")
-    description_box.insert(END, DDS.returnValue(ddsfile, 16, 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (16,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (16,2), 'value'))
 
 def func13():
     description_box.delete("1.0","end")
     description_box.insert(END, DDS.returnSpecificValue(ddsfile, (17,1), 'value'))
     description_box.insert(END, DDS.returnSpecificValue(ddsfile, (17,2), 'value'))
-    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (17,3), 'value'))
-    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (17,4), 'value'))    
+
+def func14():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (18,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (18,2), 'value'))
+
+def func15():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (19,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (19,2), 'value'))
+
+def func16():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (20,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (20,2), 'value'))
+
+def func17():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (21,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (21,2), 'value'))
+
+def func18():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (22,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (22,2), 'value'))
+
+def func19():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (23,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (23,2), 'value'))
+
+def func20():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (24,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (24,2), 'value'))
+
+def func21():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnValue(ddsfile, 25, 'value'))
+
+def func22():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnValue(ddsfile, 26, 'value'))
+
+def func23():
+    description_box.delete("1.0","end")
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (27,1), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (27,2), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (27,3), 'value'))
+    description_box.insert(END, DDS.returnSpecificValue(ddsfile, (27,4), 'value'))    
     
 
 method_menu = Menubutton(frame_left, text=DDS.returnKey(ddsfile, 4, 'key'), relief=RAISED)    
@@ -110,12 +160,23 @@ method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,10), 'val
 method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,11), 'value'), command=func11)
 method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,12), 'value'), command=func12)
 method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,13), 'value'), command=func13)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,14), 'value'), command=func14)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,15), 'value'), command=func15)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,16), 'value'), command=func16)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,17), 'value'), command=func17)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,18), 'value'), command=func18)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,19), 'value'), command=func19)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,20), 'value'), command=func20)
+
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,21), 'value'), command=func21)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,22), 'value'), command=func22)
+method_menu.menu.add_command(label=DDS.returnSpecificValue(ddsfile, (4,23), 'value'), command=func23)
 
 method_menu.pack(padx=100, pady=0)
 
 description_box = Text(frame_right, wrap=WORD, relief=FLAT, width=65)
 description_box.pack(expand=True, fill=Y)
 
-func12()
+func22()
 
 root.mainloop()
